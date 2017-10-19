@@ -1,5 +1,7 @@
 <?php 
 
+namespace Server;
+
 class Request
 {
 
@@ -56,7 +58,7 @@ class Request
     $this->_isAjax  = @$_SERVER['HTTP_X_REQUESTED_WITH'] && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
     $this->_ip      = @$_SERVER['HTTP_X_FORWARDED_FOR'] ?? @$_SERVER['REMOTE_ADDR'];
     $this->content = $this->getHeader('Content-Type');
-    $contentArr = explode("/", $content);
+    $contentArr = explode("/", $this->content);
     $this->contentPrimary = $contentArr[0];
     $this->contentSecondary = $contentArr[1] ?? '';
   }
